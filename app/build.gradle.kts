@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace = "com.tuempresa.liga1"
-    compileSdk = 34
+    compileSdk = 33 // Android 13
 
     defaultConfig {
         applicationId = "com.tuempresa.liga1"
         minSdk = 21
-        targetSdk = 34
+        targetSdk = 33 // Android 13
         versionCode = 1
         versionName = "1.0"
     }
@@ -20,12 +20,21 @@ android {
         compose = true
     }
 
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.4"
-    }
-
     kotlinOptions {
         jvmTarget = "17"
+    }
+}
+
+kotlin {
+    jvmToolchain(17)
+}
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+    kotlinOptions {
+        freeCompilerArgs += listOf(
+            "-P",
+            "plugin:androidx.compose.compiler.plugins.kotlin:suppressKotlinVersionCompatibilityCheck=true"
+        )
     }
 }
 
