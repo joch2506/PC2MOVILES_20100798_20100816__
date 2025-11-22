@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/edtNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nombre del equipo" />
+
+    <EditText
+        android:id="@+id/edtEstadio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Estadio" />
+
+    <EditText
+        android:id="@+id/edtCiudad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ciudad" />
+
+    <EditText
+        android:id="@+id/edtFundacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Año de fundación" />
+
+    <Button
+        android:id="@+id/btnGuardar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Guardar"
+        android:layout_marginTop="20dp"/>
+</LinearLayout>

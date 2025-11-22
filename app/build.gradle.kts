@@ -1,48 +1,58 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
+    id("com.android.application")
+    id("org.jetbrains.kotlin.android")
+    id("com.google.gms.google-services")
 }
 
 android {
-    namespace = "com.example.pc2moviles_20100798_20100816__"
-    compileSdk = 36
+    namespace = "com.tuempresa.liga1"
+    compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.pc2moviles_20100798_20100816__"
-        minSdk = 33
-        targetSdk = 36
+        applicationId = "com.tuempresa.liga1"
+        minSdk = 21
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
+    buildFeatures {
+        compose = true
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.4"
     }
+
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
 }
 
 dependencies {
+    // Compose
+    implementation("androidx.compose.ui:ui:1.5.0")
+    implementation("androidx.compose.material:material:1.5.0")
+    implementation("androidx.compose.ui:ui-tooling-preview:1.5.0")
+    implementation("androidx.activity:activity-compose:1.8.0")
+    debugImplementation("androidx.compose.ui:ui-tooling:1.5.0")
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    // Navigation
+    implementation("androidx.navigation:navigation-compose:2.7.0")
+
+    // Core
+    implementation("androidx.core:core-ktx:1.11.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
+
+    // Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+
+    // Firebase BOM (versiones automáticas)
+    implementation(platform("com.google.firebase:firebase-bom:34.6.0"))
+
+    // Firestore
+    implementation("com.google.firebase:firebase-firestore-ktx")
+
+    // Analytics (opcional)
+    implementation("com.google.firebase:firebase-analytics")
 }
